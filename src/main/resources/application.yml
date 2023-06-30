@@ -1,0 +1,16 @@
+spring:
+  retry:
+    max-attempts: 3
+    backoff:
+      delay: 1000
+      max-delay: 5000
+      multiplier: 2.0
+  config:
+    import: optional:secrets.yml
+
+logging:
+  level:
+    root: info
+
+news:
+  url: https://newsapi.org/v2/everything?q=%s&apiKey=%s

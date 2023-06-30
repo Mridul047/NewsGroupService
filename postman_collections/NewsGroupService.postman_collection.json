@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "b6af9073-0652-47e6-b509-d82082ae98c9",
+		"name": "NewsGroupService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET JWT",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"adminUser\",\r\n  \"password\": \"adminPass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/api/v1/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"authenticate"
+					]
+				},
+				"description": "Get jwt using registered users."
+			},
+			"response": []
+		},
+		{
+			"name": "GET NEWS ARTICLES",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pblVzZXIiLCJpYXQiOjE2ODgxMDc0ODEsImV4cCI6MTY4ODEwODY4MX0.JBXQNi3y2NIbcQ0OYb88UH6txgfTWkDNKQN_7mpVIKg",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/api/v1/newsArticles/query?searchKey=oneplus&digit=5&interval=weeks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"newsArticles",
+						"query"
+					],
+					"query": [
+						{
+							"key": "searchKey",
+							"value": "oneplus"
+						},
+						{
+							"key": "digit",
+							"value": "5"
+						},
+						{
+							"key": "interval",
+							"value": "weeks"
+						}
+					]
+				},
+				"description": "Get news articles based on supplied paramaters:\nsearchKey => articles to be searched for.\ndigit => integer count\ninterval => time unit in minutes, hours, days, weeks, months, years \n\nIf digit or interval is not supplied default is set to 12 hours"
+			},
+			"response": []
+		}
+	]
+}
